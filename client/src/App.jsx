@@ -47,9 +47,9 @@ function App() {
 
     // Sanitize API base URL to guarantee http:// scheme
     let baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
-    if (!baseUrl.startsWith('http://') && !baseUrl.startsWith('https://')) {
-      baseUrl = `http://localhost:5000/api`;
-    }
+if (!baseUrl.endsWith('/api')) {
+  baseUrl = `${baseUrl}/api`;
+}
 
     try {
       const response = await fetch(`${baseUrl}/triage/analyze`, {
